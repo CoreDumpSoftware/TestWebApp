@@ -10,14 +10,11 @@ namespace TestWebApp
 {
     public class Startup
     {
-        private readonly ILogger<Startup> _logger;
-
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration, ILogger<Startup> logger)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            _logger = logger;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,7 +32,6 @@ namespace TestWebApp
         {
             if (env.IsDevelopment())
             {
-                _logger.LogInformation($"Configuring for development environment.");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TestWebApp v1"));
